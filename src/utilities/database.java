@@ -28,7 +28,7 @@ public class database {
     public static Connection connect(String dbURL, String username, String password) {
         try {
             //step1 load the driver class
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("oracle.jdbc.driver.oracleDriver");
             conn = DriverManager.getConnection(dbURL, username, password);
             //conn = DriverManager.getConnection("jdbc:oracle:thin:@144.217.163.57:1521:XE");
             if (conn != null) {
@@ -81,6 +81,7 @@ public class database {
                 jo.accumulate(key, value);
             }
         }
+        duplicateData.beforeFirst();
         for(int j=0;j<mainObjectKeys.size();j++) {
             if(mainObjectKeys.get(j).indexOf("/c/")>-1){
                 String constantString = mainObjectKeys.get(j).substring(mainObjectKeys.get(j).indexOf("/c/")+3);
