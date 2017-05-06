@@ -72,7 +72,7 @@ public class database {
         format = format.substring(1,format.length()-1); //stripping off the initial JSONObject from the fomat specification
         ArrayList<String> mainObjectKeys = new ArrayList<>((Arrays.asList(format.split(",")))); // Splitting the format specification to obtain all the main object keys
         int k=0; // counter var for the global data key's in JSON
-        while(duplicateData.next()){
+        duplicateData.next();
             //System.out.print(isSyntax(key));
             for(int m=0;m<mainObjectKeys.size();m++){
             String key = mainObjectKeys.get(k);
@@ -81,7 +81,6 @@ public class database {
                 jo.accumulate(key, value);
             }
             }
-        }
         duplicateData.beforeFirst();
         for(int j=0;j<mainObjectKeys.size();j++) {
             if(mainObjectKeys.get(j).indexOf("/c/")>-1){
