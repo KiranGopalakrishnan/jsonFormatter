@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import vijay.getFollowing;
 
 /**
  * Created by Kiran on 03-04-2017.
@@ -18,6 +19,7 @@ public class main {
         GetPosts g=new GetPosts();
        String res= g.getPosts();
         System.out.println(res);
-        
+  
     }
+    
 }
