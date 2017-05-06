@@ -92,7 +92,6 @@ public class database {
                 JSONArray ja = new JSONArray();
                     String arrayFormat = format.substring(format.indexOf("[{") + 2, format.indexOf("}]"));
                     ArrayList<String> arrayKeys = new ArrayList<>((Arrays.asList(arrayFormat.split("&"))));
-                for (int i = 0; i < arrayKeys.size(); i++) {
 
                     System.out.println("Inside");
                     JSONObject subJo = new JSONObject();
@@ -106,7 +105,6 @@ public class database {
                         ja.add(subJo);
                         subJo.clear();
                     }
-                }
                 String key = mainObjectKeys.get(j).substring(mainObjectKeys.indexOf("/a/")+4,mainObjectKeys.get(j).indexOf("[{"));
                 jo.accumulate(key,ja);
             }
