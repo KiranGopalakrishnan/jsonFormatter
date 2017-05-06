@@ -2,6 +2,7 @@ package code;
 
 import Functions.GetPosts;
 import utilities.database;
+import jsonformat.*;
 
 import javax.xml.transform.Result;
 import java.sql.Array;
@@ -19,9 +20,13 @@ public class main {
         //GetPosts g=new GetPosts();
       // String res= g.getPosts();
         //System.out.println(res);
-      getFollowing f=new getFollowing();
+     getFollowing f=new getFollowing();
        String res1= f.getFollowing();
         System.out.println(res1);
+        getNotification gn=new getNotification();
+        gn.getNotify("1");
+        
+        
     }
     
 }
