@@ -121,4 +121,23 @@ public class database {
         }
         return foundAtLeastOne;
     }
+    public String JsonWrong()
+    {
+    JSONObject wrong=new JSONObject();
+    wrong.accumulate("status", "Wrong");
+        boolean timestamp = false;
+    wrong.accumulate("timestamp", timestamp);
+    wrong.accumulate("Message", "No Results found");
+    
+   return wrong.toString();
+    }
+     public String JsonError()
+    {
+    JSONObject error=new JSONObject();
+    error.accumulate("status", "Wrong");
+        boolean timestamp = false;
+    error.accumulate("timestamp", timestamp);
+    error.accumulate("Message", "Database Connection Error");
+    return error.toString();
+    }
 }
