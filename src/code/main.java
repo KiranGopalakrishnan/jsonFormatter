@@ -19,8 +19,8 @@ public class main {
         
         ArrayList<String> params = new ArrayList();
         params.add("1");
-        ResultSet data = a.runQuery("SELECT * FROM PROJECT2.\"NOTIFICATIONS\" WHERE USERID=?",params);
-          System.out.println(data);
+        ResultSet data = a.runQuery("SELECT * FROM PROJECT2.\"NOTIFICATIONS\" WHERE USERID = ?",params);
+          //System.out.println(data);
         String response = a.createResponse("{USERID,/c/timestamp:123756739,/a/data[{NOTIFID&NOTTEXT&LINKTO&DATETIME}]}",data);
         System.out.println(response);
     }
