@@ -73,12 +73,13 @@ public class database {
         ArrayList<String> mainObjectKeys = new ArrayList<>((Arrays.asList(format.split(",")))); // Splitting the format specification to obtain all the main object keys
         int k=0; // counter var for the global data key's in JSON
         while(duplicateData.next()){
-            String key = mainObjectKeys.get(k);
             //System.out.print(isSyntax(key));
+            for(int m=0;m<mainObjectKeys.size();m++){
+            String key = mainObjectKeys.get(k);
             if(!isSyntax(key)) {
                 String value = duplicateData.getString(key);
-                k++;
                 jo.accumulate(key, value);
+            }
             }
         }
         duplicateData.beforeFirst();
