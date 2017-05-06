@@ -25,6 +25,7 @@ public class database {
 
     private static Connection conn;
     private static String[] syntaxTexts = {"/a/","/c/"};
+     long timestamp = System.currentTimeMillis() / 1000L;
     public static boolean connect(String dbURL, String username, String password) {
         boolean response=false;
         try {
@@ -37,8 +38,10 @@ public class database {
             } else {
                 response = false;
             }
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println(e);
+        } 
+        catch (ClassNotFoundException | SQLException e) {
+          
+           return response;
         }
         return response;
 
@@ -120,5 +123,22 @@ public class database {
             }
         }
         return foundAtLeastOne;
+    }
+    public String JsonWrong()
+    {
+    JSONObject wrong=new JSONObject();
+    wrong.accumulate("status", "Wrong");
+    wrong.accumulate("timestamp", timestamp);
+    wrong.accumulate("Message", "No Results found");
+    
+    return wrong.toString();
+    }
+     public String JsonError()
+    {
+    JSONObject error=new JSONObject();
+    error.accumulate("status", "Wrong");
+    error.accumulate("timestamp", timestamp);
+    error.accumulate("Message", "Database Connection Error");
+    return error.toString();
     }
 }

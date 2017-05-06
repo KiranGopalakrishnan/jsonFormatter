@@ -1,5 +1,6 @@
 package code;
 
+import Functions.GetPosts;
 import utilities.database;
 
 import javax.xml.transform.Result;
@@ -14,14 +15,9 @@ import java.util.ArrayList;
  */
 public class main {
     public static void main(String[] args) throws SQLException {
-        database a = new database();
-        Connection conn=a.connect("jdbc:oracle:thin:@144.217.163.57:1521:XE","project2","pro2pw");
+        GetPosts g=new GetPosts();
+       String res= g.getPosts();
+        System.out.println(res);
         
-        ArrayList<String> params = new ArrayList();
-        params.add("1");
-        ResultSet data = a.runQuery("SELECT * FROM PROJECT2.\"NOTIFICATIONS\" WHERE USERID = ?",params);
-          //System.out.println(data);
-        String response = a.createResponse("{USERID,/c/timestamp:123756739,/a/data[{NOTIFID&NOTTEXT&LINKTO&DATETIME}]}",data);
-        System.out.println(response);
     }
 }
