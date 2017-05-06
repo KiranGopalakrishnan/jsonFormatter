@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import vijay.getFollowing;
+import Functions.getFollowing;
 
 /**
  * Created by Kiran on 03-04-2017.

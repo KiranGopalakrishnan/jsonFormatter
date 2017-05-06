@@ -136,7 +136,7 @@ public class database {
      public String JsonError()
     {
     JSONObject error=new JSONObject();
-    error.accumulate("status", "Wrong");
+    error.accumulate("status", "Error");
     error.accumulate("timestamp", timestamp);
     error.accumulate("Message", "Database Connection Error");
     return error.toString();
