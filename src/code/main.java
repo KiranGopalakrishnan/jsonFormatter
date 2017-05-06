@@ -16,10 +16,12 @@ import Functions.getFollowing;
  */
 public class main {
     public static void main(String[] args) throws SQLException {
-        GetPosts g=new GetPosts();
-       String res= g.getPosts();
-        System.out.println(res);
-  
+        //GetPosts g=new GetPosts();
+      // String res= g.getPosts();
+        //System.out.println(res);
+      getFollowing f=new getFollowing();
+       String res1= f.getFollowing();
+        System.out.println(res1);
     }
     
 }

@@ -15,7 +15,7 @@ import utilities.database;
  * @author vkalangi
  */
 public class getFollowing {
-    public String getPosts() throws SQLException
+    public String getFollowing() throws SQLException
     {
         database a = new database();
         try
