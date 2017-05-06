@@ -74,7 +74,7 @@ public class database {
         int k=0; // counter var for the global data key's in JSON
         while(duplicateData.next()){
             String key = mainObjectKeys.get(k);
-            System.out.print(isSyntax(key));
+            //System.out.print(isSyntax(key));
             if(!isSyntax(key)) {
                 String value = duplicateData.getString(key);
                 k++;
@@ -93,9 +93,10 @@ public class database {
                     String arrayFormat = format.substring(format.indexOf("[{") + 2, format.indexOf("}]"));
                     ArrayList<String> arrayKeys = new ArrayList<>((Arrays.asList(arrayFormat.split("&"))));
 
-                    System.out.println("Inside");
+                    //System.out.println("Inside");
                     JSONObject subJo = new JSONObject();
                     duplicateData.beforeFirst(); //Resetting the next() counter on duplicateData result set;
+                    System.out.println(arrayKeys.size());
                     while(duplicateData.next()){
                         for(int l=0;l<arrayKeys.size();l++) {
                             String key = arrayKeys.get(l);
