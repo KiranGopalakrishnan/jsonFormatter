@@ -28,7 +28,7 @@ public class database {
     public static Connection connect(String dbURL, String username, String password) {
         try {
             //step1 load the driver class
-            Class.forName("oracle.jdbc.driver.oracleDriver");
+            Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(dbURL, username, password);
             //conn = DriverManager.getConnection("jdbc:oracle:thin:@144.217.163.57:1521:XE");
             if (conn != null) {
@@ -52,7 +52,7 @@ public class database {
         ResultSet rs=null;
         String query = sqlQuery;
         try {
-            stmt = conn.prepareStatement(query);
+            stmt = conn.prepareStatement(query,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             int k=1;
             for(int i=0;i<params.size();i++){
                 stmt.setString(k,params.get(i));

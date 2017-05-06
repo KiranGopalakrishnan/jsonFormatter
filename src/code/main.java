@@ -15,10 +15,12 @@ import java.util.ArrayList;
 public class main {
     public static void main(String[] args) throws SQLException {
         database a = new database();
-        Connection conn=a.connect("jdbc:mysql://sql9.freesqldatabase.com:3306/sql9165691?zeroDateTimeBehavior=convertToNull","sql9165691","zVA1NIi6Vy");
+        Connection conn=a.connect("jdbc:oracle:thin:@144.217.163.57:1521:XE","project2","pro2pw");
+        
         ArrayList<String> params = new ArrayList();
-        ResultSet data = a.runQuery("SELECT * FROM users",params);
-        String response = a.createResponse("{userId,fname,lname,/c/timestamp:123756739,/a/data[{email}]},/a/secondDATA[{email}]",data);
+        ResultSet data = a.runQuery("SELECT * FROM PROJECT2.\"Users\"",params);
+          System.out.println(data);
+        String response = a.createResponse("{userID,/c/timestamp:123756739,/a/data[{email}]},/a/secondDATA[{email}]",data);
         System.out.println(response);
     }
 }
