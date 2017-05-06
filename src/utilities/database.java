@@ -90,9 +90,9 @@ public class database {
             }
             if(mainObjectKeys.get(j).indexOf("/a/")>-1) {
                 JSONArray ja = new JSONArray();
-                for (int i = 0; i < mainObjectKeys.size(); i++) {
                     String arrayFormat = format.substring(format.indexOf("[{") + 2, format.indexOf("}]"));
                     ArrayList<String> arrayKeys = new ArrayList<>((Arrays.asList(arrayFormat.split("&"))));
+                for (int i = 0; i < arrayKeys.size(); i++) {
 
                     System.out.println("Inside");
                     JSONObject subJo = new JSONObject();

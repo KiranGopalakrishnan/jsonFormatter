@@ -18,9 +18,10 @@ public class main {
         Connection conn=a.connect("jdbc:oracle:thin:@144.217.163.57:1521:XE","project2","pro2pw");
         
         ArrayList<String> params = new ArrayList();
-        ResultSet data = a.runQuery("SELECT * FROM PROJECT2.\"Users\"",params);
+        params.add("1");
+        ResultSet data = a.runQuery("SELECT * FROM PROJECT2.\"NOTIFICATIONS\" WHERE USERID=?",params);
           System.out.println(data);
-        String response = a.createResponse("{userID,/c/timestamp:123756739,/a/data[{email}]},/a/secondDATA[{email}]",data);
+        String response = a.createResponse("{USERID,/c/timestamp:123756739,/a/data[{NOTIFID}]}",data);
         System.out.println(response);
     }
 }
