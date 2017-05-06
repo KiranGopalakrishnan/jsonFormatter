@@ -96,7 +96,7 @@ public class database {
                     //System.out.println("Inside");
                     JSONObject subJo = new JSONObject();
                     duplicateData.beforeFirst(); //Resetting the next() counter on duplicateData result set;
-                    System.out.println(arrayKeys.size());
+                    //System.out.println(arrayKeys.size());
                     while(duplicateData.next()){
                         for(int l=0;l<arrayKeys.size();l++) {
                             String key = arrayKeys.get(l);
