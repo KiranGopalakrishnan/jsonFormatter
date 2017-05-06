@@ -25,21 +25,22 @@ public class database {
 
     private static Connection conn;
     private static String[] syntaxTexts = {"/a/","/c/"};
-    public static Connection connect(String dbURL, String username, String password) {
+    public static boolean connect(String dbURL, String username, String password) {
+        boolean response=false;
         try {
             //step1 load the driver class
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(dbURL, username, password);
             //conn = DriverManager.getConnection("jdbc:oracle:thin:@144.217.163.57:1521:XE");
             if (conn != null) {
-                System.out.println("Database Connected...");
+                response = true;
             } else {
-                System.out.println("Error in database connection...");
+                response = false;
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
-        return conn;
+        return response;
 
     }
 
@@ -71,11 +72,10 @@ public class database {
         JSONObject jo = new JSONObject(); // the main JSONObject declared in global scope of the function
         format = format.substring(1,format.length()-1); //stripping off the initial JSONObject from the fomat specification
         ArrayList<String> mainObjectKeys = new ArrayList<>((Arrays.asList(format.split(",")))); // Splitting the format specification to obtain all the main object keys
-        int k=0; // counter var for the global data key's in JSON
         duplicateData.next();
             //System.out.print(isSyntax(key));
             for(int m=0;m<mainObjectKeys.size();m++){
-            String key = mainObjectKeys.get(k);
+            String key = mainObjectKeys.get(m);
             if(!isSyntax(key)) {
                 String value = duplicateData.getString(key);
                 jo.accumulate(key, value);
@@ -92,8 +92,6 @@ public class database {
                 JSONArray ja = new JSONArray();
                     String arrayFormat = format.substring(format.indexOf("[{") + 2, format.indexOf("}]"));
                     ArrayList<String> arrayKeys = new ArrayList<>((Arrays.asList(arrayFormat.split("&"))));
-
-                    //System.out.println("Inside");
                     JSONObject subJo = new JSONObject();
                     duplicateData.beforeFirst(); //Resetting the next() counter on duplicateData result set;
                     //System.out.println(arrayKeys.size());
