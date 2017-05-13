@@ -23,15 +23,18 @@ import static oracle.net.aso.b.a;
  */
 public class Changepass {
            database a = new database();
-       public void Changepass(String userID,String pass) throws SQLException{
+       public String Changepass(String userID,String pass) throws SQLException{
                  database a = new database();
-       
+       try
+       {
          Boolean conn=a.connect("jdbc:oracle:thin:@144.217.163.57:1521:XE","project2","pro2pw");
+         ArrayList<String> params = new ArrayList();
          if(conn){
-        ArrayList<String> params = new ArrayList();
+       
+       
        params.add(userID);
         ResultSet data = a.runQuery("select * from PROJECT2.\"Users\" where \"userID\"=?",params);
-          System.out.println(data);
+         // System.out.println(data);
           data.last();
           int k=data.getRow();
         
@@ -40,18 +43,41 @@ public class Changepass {
         if(k>0){
            
           ArrayList<String> params1 = new ArrayList();
-           
+          params1.add(pass);
+           params1.add(userID);
             
-        ResultSet data1 = a.runQuery("UPDATE PROJECT2.\"Users\" SET \"password\" = 'ashr'  WHERE \"userID\" = 1",params1);      
-        String response = a.createResponse("{/c/Staus:OK,/c/timestamp:123756739}",data);
-        System.out.println(response);
+        ResultSet data1 = a.runQuery("UPDATE PROJECT2.\"Users\" SET \"password\" = ?  WHERE \"userID\" = ?",params1);      
+        String response = a.createResponse("{/c/Staus:OK,/c/timestamp:" + a.timestamp+",/c/Message:Password changed Successfully}",data);
        
+       
+       return response;
         
         }
-        else{
-           String response = a.createResponse("{/c/Staus:Error,/c/timestamp:123756739}",data);
-        System.out.println(response); 
+        else
+          
+        {
+           database a1 = new database();
+           String wrong= a1.JsonWrong();
+           return wrong;
+        
         }
-    }
+         }
+         else
+         {
+           database a1 = new database();
+           String error= a1.JsonError();
+           return error;  
+         }
+          
+        }
+       
+        catch(SQLException e)
+            
+        {
+           database a1 = new database();
+           String error= a1.JsonError();
+           return error;
+            
+        }
        }
 }

@@ -20,12 +20,9 @@ public class main {
         //GetPosts g=new GetPosts();
       // String res= g.getPosts();
         //System.out.println(res);
-     getFollowing f=new getFollowing();
-       String res1= f.getFollowing();
-        System.out.println(res1);
-        getNotification gn=new getNotification();
-        gn.getNotify("1");
-        
+     Changepass cp=new Changepass();
+        String res4=cp.Changepass("1", "loginko");
+        System.out.println(res4);
         
     }
     

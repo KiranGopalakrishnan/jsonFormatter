@@ -1,5 +1,3 @@
-
-
 /**
  * Created by Kiran on 03-04-2017.
  */
@@ -22,10 +20,11 @@ package utilities;
  * @author 1691620
  */
 public class database {
+   
 
     private static Connection conn;
     private static String[] syntaxTexts = {"/a/","/c/"};
-     long timestamp = System.currentTimeMillis() / 1000L;
+     public long timestamp = System.currentTimeMillis() / 1000L;
     public static boolean connect(String dbURL, String username, String password) {
         boolean response=false;
         try {
